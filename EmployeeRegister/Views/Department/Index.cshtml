@@ -1,0 +1,34 @@
+﻿@using EmployeeRegister.Models
+@model IEnumerable<EmployeeRegister.Models.Department>
+
+@{
+    ViewData["Title"] = "Управление компаниями";
+}
+
+<h1>Управление компаниями</h1>
+
+<a asp-action="AddDepartment" class="btn btn-primary" style="margin-top: 15px; margin-bottom: 15px;">Добавить</a>
+
+<div>
+    <table class="table table-dark">
+        <thead class="tab">
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>ОПФ</th>
+            <th>Операция</th>
+        </tr>
+        @foreach (Department d in Model)
+        {
+            <tr>
+                <td>@d.DepartmentID</td>
+                <td>@d.Name</td>
+                <td>@d.Description</td>
+                <td>
+                    <a asp-action="DetailDepartment" asp-route-id="@d.DepartmentID" class="btn btn-secondary btn-sm">Сведения</a> <a asp-action="EditDepartment" asp-route-id="@d.DepartmentID" class="btn btn-secondary btn-sm">Редактировать</a> <a asp-action="DeleteDepartment" asp-route-id="@d.DepartmentID" class="btn btn-secondary btn-sm">Удалить</a>
+                </td>
+            </tr>
+        }
+        </thead>
+    </table>
+</div>

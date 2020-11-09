@@ -1,0 +1,14 @@
+﻿@model EmployeeRegister.ViewModels.EmployeeWithList
+@{
+    ViewData["Title"] = "Сведения сотрудника";
+}
+
+<h1>Сведения сотрудника</h1>
+
+<div>ID: @Model.EmployeeID</div>
+<div>Имя: @Model.Name</div>
+<div>Фамиля: @Model.Surname</div>
+<div>Дата приёма на работу: @Model.EmploymentDate.ToString("dd-MM-yyyy")</div>
+<div>Должность: @Model.Position</div>
+<div>Компания: @Model.DeptName</div>
+<a asp-action="Index">Вернуться к списку</a>

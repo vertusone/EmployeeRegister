@@ -1,0 +1,35 @@
+﻿@using EmployeeRegister.Models
+@model EmployeeRegister.Models.Department
+@{
+    ViewData["Title"] = "DetailDepartment";
+}
+
+<h1>Сведения компании</h1>
+
+<div>
+    <p>ID: @Model.DepartmentID</p>
+    <p>Название: @Model.Name</p>
+    <p>ОПФ: @Model.Description</p>
+
+    <div class="w-50">
+        <table class="table table-dark table-sm text-center">
+            <thead>
+            <tr>
+                <th>Cотрудник</th>
+                <th>Должность</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (Employee e in Model.Employees)
+            {
+                <tr>
+                    <td>@e.Surname @e.Name</td>
+                    <td>@e.Position</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <a asp-action="Index">Вернуться к списку</a>
+    </div>
+</div>
+

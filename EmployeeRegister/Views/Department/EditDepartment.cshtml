@@ -1,0 +1,29 @@
+﻿@model EmployeeRegister.Models.Department
+@{
+    ViewData["Title"] = "EditDepartament";
+}
+
+<h1>Редактирование департамента</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditDepartment">
+            <input type="hidden" asp-for="DepartmentID" />
+            <div class="form-group">
+                <label asp-for="Name">Название: </label>
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description">Описание: </label>
+                <textarea class="form-control" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary" type="submit" action="EditTask">Сохранить</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,49 @@
+﻿@using EmployeeRegister.Enums
+@model EmployeeRegister.ViewModels.EmployeeDepartment
+@{
+    ViewData["Title"] = "Добавить сотрудника";
+}
+
+<h1>Добавить сотрудника</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddEmployee">
+            <div class="form-group">
+                <label asp-for="EmplSurname">Фамилия сотрудника </label>
+                <input class="form-control" asp-for="EmplSurname"/>
+                <span asp-validation-for="EmplSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmplName">Имя сотрудника: </label>
+                <input class="form-control" asp-for="EmplName"/>
+                <span asp-validation-for="EmplName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmplMiddleName">Отчество сотрудника </label>
+                <input class="form-control" asp-for="EmplMiddleName"/>
+                <span asp-validation-for="EmplMiddleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmploymentDate">Дата приёма на работу сотрудника: </label>
+                <input type="date" class="form-control" asp-for="EmploymentDate"/>
+                <span asp-validation-for="EmploymentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position">Должность: </label>
+                <select asp-for="Position" class="form-control" asp-items="@new SelectList(Enum.GetNames(typeof(Position)))"></select>
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentID">Компания: </label>
+                <select asp-for="DepartmentID" class="form-control" asp-items="@(new SelectList(Model.departmentsEDVM, "DepartmentID", "Name"))"></select>
+                <span asp-validation-for="DepartmentID" class="text-danger"></span>
+            </div>
+            <button class="btn btn-primary" type="submit">Добавить</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
